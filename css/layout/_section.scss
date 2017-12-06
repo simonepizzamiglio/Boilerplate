@@ -1,0 +1,11 @@
+.Section {
+    padding: $space-l 0;
+
+    &.Section--small {
+        padding: $space-m 0;
+    }
+
+    &.Section--large {
+        padding: $space-xl 0;
+    }
+}

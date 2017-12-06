@@ -1,0 +1,38 @@
+.btn {
+    display: inline-block;
+    position: relative;
+    border: 0;
+    background-color: $primary-color;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $white;
+    cursor: pointer;
+    @include font-size($font-size-base);
+    &.btn--small {
+        padding: $space-inset-squish-s;
+        &.btn--circle {
+            border-radius: 18px;
+        }
+    }
+    &.btn--mid {
+        padding: $space-inset-squish-m;
+        &.btn--circle {
+            border-radius: 24px;
+        }
+    }
+    &.btn--large {
+        padding: $space-inset-squish-l;
+        &.btn--circle {
+            border-radius: 32px;
+        }
+    }
+    &.btn--round {
+        border-radius: $border-radius;
+    }
+    &.btn--primary {
+        background-color: $primary-color;
+    }
+    &.btn--secondary {
+        background-color: $secondary-color;
+    }
+}

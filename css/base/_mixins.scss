@@ -1,0 +1,29 @@
+/*Convert Font Size from px to em*/
+$browser-context: 16; // Default
+
+/*Font-size from px to rem*/
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+/*Adds margin-rigth to list except to last-child*/
+@mixin list-margin($margin) {
+  margin-right: $margin;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+/*Background-image*/
+@mixin background-image($url, $position: center, $size: contain) {
+  background-image: url($url);
+  background-position: $position;
+  background-size: $size;
+  background-repeat: no-repeat;
+}
