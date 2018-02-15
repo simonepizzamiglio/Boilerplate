@@ -895,7 +895,7 @@ html, body {
   margin: 0;
   padding: 0; }
 
-html {
+body {
   font-size: 16px;
   line-height: 1.5;
   background: #fff;
@@ -967,9 +967,9 @@ a {
   color: #e74c3c;
   text-decoration: none; }
   a:hover {
-    text-decoration: none; }
+    text-decoration: underline; }
   a:active, a:focus {
-    color: #a82315; }
+    color: #e74c3c; }
 
 p {
   margin: 0 0 16px 0; }
@@ -1012,28 +1012,42 @@ strong {
   display: inline-block;
   position: relative;
   border: 0;
+  text-align: center;
   background-color: #3b5998;
   font-weight: bold;
   text-transform: uppercase;
   color: #fff;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
   cursor: pointer;
   font-size: 16px;
   font-size: 1rem; }
   .btn.btn--small {
-    padding: 4px 8px 4px 8px; }
+    padding: 8px 12px 8px 12px; }
     .btn.btn--small.btn--circle {
       border-radius: 18px; }
   .btn.btn--mid {
-    padding: 8px 16px 8px 16px; }
+    padding: 12px 24px 12px 24px; }
     .btn.btn--mid.btn--circle {
       border-radius: 24px; }
   .btn.btn--large {
     padding: 16px 32px 16px 32px; }
     .btn.btn--large.btn--circle {
       border-radius: 32px; }
+  .btn.btn--plain {
+    background-color: transparent; }
   .btn.btn--round {
     border-radius: 4px; }
   .btn.btn--primary {
     background-color: #3b5998; }
   .btn.btn--secondary {
     background-color: #dd4b39; }
+
+.input {
+  padding: 8px;
+  border: 1px solid #BDBDBD;
+  border-radius: 4px; }
+
+/*OTHER FILES*/

@@ -2,10 +2,15 @@
     display: inline-block;
     position: relative;
     border: 0;
+    text-align: center;
     background-color: $primary-color;
     font-weight: bold;
     text-transform: uppercase;
     color: $white;
+    letter-spacing: 0.05em;
+    line-height: 1;
+    white-space: nowrap;
+    vertical-align: middle;
     cursor: pointer;
     @include font-size($font-size-base);
     &.btn--small {
@@ -25,6 +30,9 @@
         &.btn--circle {
             border-radius: 32px;
         }
+    }
+    &.btn--plain {
+        background-color: transparent;
     }
     &.btn--round {
         border-radius: $border-radius;

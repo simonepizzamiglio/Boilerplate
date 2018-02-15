@@ -67,11 +67,11 @@ a {
   color: $link-color;
   text-decoration: none;
   &:hover {
-    text-decoration: none;
+    text-decoration: underline;
   }
   &:active,
   &:focus {
-    color: darken($link-color, 20%);
+    color: $link-color;
   }
 }
 
