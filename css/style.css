@@ -842,6 +842,12 @@ template {
 .align-center {
   align-items: center; }
 
+.align-start {
+  align-items: flex-start; }
+
+.align-end {
+  align-items: flex-end; }
+
 .text-center {
   text-align: center; }
 
@@ -850,6 +856,12 @@ template {
 
 .justify-center {
   justify-content: center; }
+
+.justify-start {
+  justify-content: flex-start; }
+
+.justify-end {
+  justify-content: flex-end; }
 
 .justify-between {
   justify-content: space-between; }
@@ -871,6 +883,7 @@ template {
 /*Font-size from px to rem*/
 /*Adds margin-rigth to list except to last-child*/
 /*Background-image*/
+/*Backgorund image(set in html)*/
 *,
 *::after,
 *::before {
@@ -980,6 +993,7 @@ em {
 strong {
   font-weight: bold; }
 
+/*VENDOR*/
 /*LAYOUT*/
 .Section {
   padding: 32px 0; }
@@ -1023,5 +1037,3 @@ strong {
     background-color: #3b5998; }
   .btn.btn--secondary {
     background-color: #dd4b39; }
-
-/*VENDOR*/

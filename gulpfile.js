@@ -1,12 +1,16 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var cleanCSS = require('gulp-clean-css');
-var concat = require('gulp-concat');
-var browserSync = require('browser-sync').create();
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const uglify = require('gulp-uglify');
+const cleanCSS = require('gulp-clean-css');
+const concat = require('gulp-concat');
+const browserSync = require('browser-sync').create();
+const babel = require('gulp-babel');
+const plumber = require('gulp-plumber');
+const imagemin = require('gulp-imagemin');
 
-gulp.task('sass', function(){
-  	return gulp.src('./css/**/*.scss')
+gulp.task('sass', () => {
+    return gulp.src('./css/**/*.scss')
+    .pipe(plumber())
     .pipe(sass())
     .pipe(concat('style.css'))
     .pipe(gulp.dest('./css'))
@@ -18,8 +22,10 @@ gulp.task('sass', function(){
     }));
 });
 
-gulp.task('scripts', function () {
-	return gulp.src(['./js/vendor/*.js', './js/build/*.js'])
+gulp.task('scripts', () => {
+  return gulp.src(['./js/vendor/*.js', './js/build/*.js'])
+  .pipe(plumber())
+  .pipe(babel({presets: ['es2015']}))
 	.pipe(concat('main.js'))
   .pipe(gulp.dest('./js'))
   .pipe(concat('main.min.js'))
@@ -30,7 +36,22 @@ gulp.task('scripts', function () {
   }));
 });
 
-gulp.task('browserSync', function() {
+gulp.task('image', () =>
+gulp.src('./images/*')
+    .pipe(imagemin({
+      progressive: true,
+      interlaced: true,
+      multipass: true,
+      svgoPlugins: [{
+        removeViewBox: false,
+        removeUselessStrokeAndFill: false,
+        removeEmptyAttrs: true,
+      }],
+    }))
+    .pipe(gulp.dest('./images'))
+);
+
+gulp.task('browserSync', () => {
   browserSync.init({
     server: {
       baseDir: './'
@@ -38,9 +59,10 @@ gulp.task('browserSync', function() {
   })
 })
 
-gulp.task('watch', ['browserSync', 'sass', 'scripts'], function(){
+gulp.task('watch', ['browserSync', 'sass', 'scripts'], () => {
   gulp.watch('css/**/*.scss', ['sass']); 
-  gulp.watch('js/**/*.js', ['scripts']);
+  gulp.watch('js/vendor/*.js', ['scripts']);
+  gulp.watch('js/build/*.js', ['scripts']);
   // Reloads the browser whenever HTML, CSS or JS files change
   gulp.watch('*.css', browserSync.reload); 
   gulp.watch('*.html', browserSync.reload); 

@@ -1,3 +1,1 @@
-var App = function() {
-    console.log('mandiii');
-};
+const app = () => console.log('mandi');

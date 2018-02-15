@@ -21,8 +21,15 @@ $browser-context: 16; // Default
 }
 
 /*Background-image*/
-@mixin background-image($url, $position: center, $size: contain) {
+@mixin background-image($url, $position: center, $size: cover) {
   background-image: url($url);
+  background-position: $position;
+  background-size: $size;
+  background-repeat: no-repeat;
+}
+
+/*Backgorund image(set in html)*/
+@mixin background($position: center, $size: cover) {
   background-position: $position;
   background-size: $size;
   background-repeat: no-repeat;
