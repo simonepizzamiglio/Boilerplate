@@ -1,11 +1,15 @@
-.Section {
+.section {
     padding: $space-l 0;
 
-    &.Section--small {
+    &-small {
         padding: $space-m 0;
     }
 
-    &.Section--large {
+    &-large {
         padding: $space-xl 0;
+    }
+
+    &-xlarge {
+        padding: $space-xl+$space-l 0;
     }
 }

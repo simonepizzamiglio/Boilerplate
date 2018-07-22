@@ -13,29 +13,30 @@
     vertical-align: middle;
     cursor: pointer;
     @include font-size($font-size-base);
+    &:hover {
+        text-decoration: none;
+    }
+    &:focus,
+    &:active {
+        outline: 0;
+    }
     &.btn--small {
         padding: $space-inset-squish-s;
-        &.btn--circle {
-            border-radius: 18px;
-        }
     }
     &.btn--mid {
         padding: $space-inset-squish-m;
-        &.btn--circle {
-            border-radius: 24px;
-        }
     }
     &.btn--large {
         padding: $space-inset-squish-l;
-        &.btn--circle {
-            border-radius: 32px;
-        }
     }
     &.btn--plain {
         background-color: transparent;
     }
     &.btn--round {
         border-radius: $border-radius;
+    }
+    &.btn--full {
+        width: 100%;
     }
     &.btn--primary {
         background-color: $primary-color;

@@ -24,9 +24,9 @@ $spotify            :  #2ebd59;
 
 
 /*TYPOGRAPHY*/
-$font-family-sans-serif : "Helvetica", "Roboto", "Arial", sans-serif;
-$font-family-serif      : "Palatino Linotype", "Times New Roman", Times, serif;
-$font-family-monospace  : "Consolas", "Monaco", "Bitstream Vera Sans Mono", "Courier", monospace;
+$font-family-sans-serif : 'Helvetica', 'Roboto', 'Arial', sans-serif;
+$font-family-serif      : 'Palatino Linotype', 'Times New Roman', Times, serif;
+$font-family-monospace  : 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', 'Courier', monospace;
 $font-project           : $font-family-sans-serif;
 $line-base              : 1.5;
 $font-size-base         : 16px;
@@ -48,21 +48,6 @@ $text-color		: $black;
 $link-color		: $red;
 $border-radius  : 4px;
 $transition     : all 0.4s ease;
-
-/*LAYOUT*/
-$wrapper-size	: 1024px;
-
-/*BREAKPOINTS*/
-$breakpoint-xs-down : 29.9375em;    //479px
-$breakpoint-xs      : 30em;         //480px
-$breakpoint-sm-down : 47.9375em;    //767px
-$breakpoint-sm      : 48em;         //768px
-$breakpoint-md-down : 61.9375em;    //991px
-$breakpoint-md      : 62em;         // 992px
-$breakpoint-lg-down : 74.9375em;    //1199px
-$breakpoint-lg      : 75em;         //1200px
-$breakpoint-xl-down : 99.9375em;    //1599px
-$breakpoint-xl      : 100em;        //1600px
 
 /*SPACING VARIABLES*/
 $space-default          : 16px;

@@ -22,6 +22,7 @@ body {
   background: $body-bg;
   color: $text-color;
   font-family: $font-project;
+  -webkit-overflow-scrolling: touch;
 }
 
 @import "typography";

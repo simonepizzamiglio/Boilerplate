@@ -7,9 +7,17 @@ const browserSync = require('browser-sync').create();
 const babel = require('gulp-babel');
 const plumber = require('gulp-plumber');
 const imagemin = require('gulp-imagemin');
+const browserify = require('browserify');
+const watchify = require('watchify');
+const assign = require('lodash.assign');
+const babelify = require('babelify');
+const source = require('vinyl-source-stream');
+const sourcemaps = require('gulp-sourcemaps');
+const buffer = require('vinyl-buffer');
+const rename = require('gulp-rename');
 
 gulp.task('sass', () => {
-    return gulp.src('./css/**/*.scss')
+    gulp.src('./css/**/*.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(concat('style.css'))
@@ -23,17 +31,26 @@ gulp.task('sass', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src(['./js/vendor/*.js', './js/build/*.js'])
-  .pipe(plumber())
-  .pipe(babel({presets: ['es2015']}))
-	.pipe(concat('main.js'))
-  .pipe(gulp.dest('./js'))
-  .pipe(concat('main.min.js'))
-	.pipe(uglify({compress: {hoist_funs: false, hoist_vars: false}}))
-  .pipe(gulp.dest('./js'))
-  .pipe(browserSync.reload({
-    stream: true
-  }));
+    const customOpts = {
+      entries: ['./js/build/app.js'],
+      debug: true
+    };
+    const opts = assign({}, watchify.args, customOpts);
+    const b = watchify(browserify(opts));
+
+    b
+    .transform(babelify)
+    .bundle()
+    .pipe(plumber())
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./js'))
+    .pipe(browserSync.reload({
+      stream: true
+    }));
 });
 
 gulp.task('image', () =>
@@ -61,8 +78,7 @@ gulp.task('browserSync', () => {
 
 gulp.task('watch', ['browserSync', 'sass', 'scripts'], () => {
   gulp.watch('css/**/*.scss', ['sass']); 
-  gulp.watch('js/vendor/*.js', ['scripts']);
-  gulp.watch('js/build/*.js', ['scripts']);
+  gulp.watch('js/**/*.js', ['scripts']);
   // Reloads the browser whenever HTML, CSS or JS files change
   gulp.watch('*.css', browserSync.reload); 
   gulp.watch('*.html', browserSync.reload); 

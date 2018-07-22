@@ -1,22 +1,33 @@
-/*Convert Font Size from px to em*/
-$browser-context: 16; // Default
+/*Font-size from px to em*/
+@function em($size) {
+  $emSize: $size / $font-size-base;
+  @return #{$emSize}em;
+}
 
 /*Font-size from px to rem*/
-@function calculateRem($size) {
-  $remSize: $size / 16px;
+@function rem($size) {
+  $remSize: $size / $font-size-base;
   @return #{$remSize}rem;
 }
 
 @mixin font-size($size) {
   font-size: $size;
-  font-size: calculateRem($size);
+  font-size: rem($size);
 }
 
 /*Adds margin-rigth to list except to last-child*/
-@mixin list-margin($margin) {
+@mixin list-margin-horizontal($margin) {
   margin-right: $margin;
   &:last-child {
     margin-right: 0;
+  }
+}
+
+/*Adds margin-bottom to list except to last-child*/
+@mixin list-margin-vertical($margin) {
+  margin-bottom: $margin;
+  &:last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -33,4 +44,89 @@ $browser-context: 16; // Default
   background-position: $position;
   background-size: $size;
   background-repeat: no-repeat;
+}
+
+/*Media Queries*/
+@mixin mq($minWidth, $maxWidth) {
+  @media only screen and (min-width: $minWidth) and (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+@mixin mq-max($maxWidth) {
+  @media only screen and (max-width: $maxWidth) {
+    @content;
+  }
+}
+
+@mixin mq-min($minWidth) {
+  @media only screen and (min-width: $minWidth) {
+    @content;
+  }
+}
+
+@mixin mq-h($minHeight, $maxHeight) {
+  @media only screen and (min-height: $minHeight) and (max-height: $maxHeight) {
+    @content;
+  }
+}
+
+@mixin mq-max-h($maxHeight) {
+  @media only screen and (max-height: $maxHeight) {
+    @content;
+  }
+}
+
+@mixin mq-min-h($minHeight) {
+  @media only screen and (min-height: $minHeight) {
+    @content;
+  }
+}
+
+/* Make a copy of container*/
+@mixin make-container() {
+  max-width: $wrapper-size;
+  padding: 0 $space-m;
+
+  @media only screen and (min-width: 48em) {
+      width: 46rem;
+  }
+
+  @media only screen and (min-width: 62em) {
+      width: 61rem;
+  }
+
+  @media only screen and (min-width: 75em) {
+      width: 71rem;
+  }
+}
+
+/*Bounce Animation*/
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -webkit-transform: translateY(0);
+      transform: translateY(0)
+  }
+  40% {
+      -moz-transform: translateY(-20px);
+      -ms-transform: translateY(-20px);
+      -webkit-transform: translateY(-20px);
+      transform: translateY(-20px)
+  }
+  60% {
+      -moz-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+      -webkit-transform: translateY(-10px);
+      transform: translateY(-10px)
+  }
+}
+
+.bounce {
+  animation: bounce 2s infinite
 }
