@@ -62,6 +62,18 @@ small,
   text-transform: lowercase !important;
 }
 
+.initial {
+  text-transform: initial !important;
+}
+
+.primary-color {
+  color: $primary-color;
+}
+
+.secondary-color {
+  color: $secondary-color;
+}
+
 // Links
 a {
   color: $link-color;

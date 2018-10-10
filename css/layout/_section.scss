@@ -12,4 +12,12 @@
     &-xlarge {
         padding: $space-xl+$space-l 0;
     }
+
+    &-primary {
+        background-color: $primary-color;
+    }
+
+    &-secondary {
+        background-color: $secondary-color;
+    }
 }
