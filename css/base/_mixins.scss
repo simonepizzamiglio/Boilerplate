@@ -130,3 +130,16 @@
 .bounce {
   animation: bounce 2s infinite
 }
+
+/*Mixins fade-in and fa-out effects, useful for popups*/
+@mixin fade-out($duration) {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear $duration, opacity $duration;
+}
+
+@mixin fade-in($duration) {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity $duration;
+}

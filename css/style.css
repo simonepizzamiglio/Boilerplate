@@ -928,6 +928,7 @@ template {
 .bounce {
   animation: bounce 2s infinite; }
 
+/*Mixins fade-in and fa-out effects, useful for popups*/
 *,
 *::after,
 *::before {
@@ -1008,6 +1009,15 @@ small,
 .lowercase {
   text-transform: lowercase !important; }
 
+.initial {
+  text-transform: initial !important; }
+
+.primary-color {
+  color: #3b5998; }
+
+.secondary-color {
+  color: #dd4b39; }
+
 a {
   color: #e74c3c;
   text-decoration: none; }
@@ -1055,6 +1065,10 @@ textarea {
     padding: 64px 0; }
   .section-xlarge {
     padding: 96px 0; }
+  .section-primary {
+    background-color: #3b5998; }
+  .section-secondary {
+    background-color: #dd4b39; }
 
 /*MODULES*/
 /*DEPENDENCIES*/
@@ -1079,11 +1093,11 @@ textarea {
   .btn:focus, .btn:active {
     outline: 0; }
   .btn.btn--small {
-    padding: 8px 12px 8px 12px; }
+    padding: 12px 16px 12px 16px; }
   .btn.btn--mid {
-    padding: 12px 24px 12px 24px; }
-  .btn.btn--large {
     padding: 16px 32px 16px 32px; }
+  .btn.btn--large {
+    padding: 24px 48px 24px 48px; }
   .btn.btn--plain {
     background-color: transparent; }
   .btn.btn--round {
